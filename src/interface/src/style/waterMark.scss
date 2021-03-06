@@ -1,0 +1,11 @@
+.waterMark {
+  font-size: 26px;
+  font-family: 'Qanelas-Medium';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: $bg_color;
+  padding: 5px;
+  border-top-left-radius: 10px;
+  user-select: none;
+};

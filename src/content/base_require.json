@@ -1,0 +1,14 @@
+{
+  "name": "base",
+  "list": {
+    "maps": {
+      "map_01": "models/maps/map_01",
+      "map_01_roof": "models/maps/map_01_roof"
+    },
+    "general": {
+      "cylinder": "models/general/cylinder",
+      "emerald": "models/general/emerald",
+      "icosphere": "models/general/icosphere"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+.panel__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+};
+
+.panel__align {
+  min-width: 580px;
+  min-height: 500px;
+  background-color: $bg_color;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  padding-top: 20px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+};
+
+.panel__title {
+  font-family: 'Qanelas-Medium';
+  font-size: 26px;
+  user-select: none;
+  padding-bottom: 10px;
+};

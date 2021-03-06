@@ -1,0 +1,44 @@
+@font-face {
+  font-family: 'Qanelas';
+  font-weight: normal;
+  font-style: normal;
+  src: url('./fonts/Qanelas-Regular.ttf') format('truetype');
+};
+@font-face {
+  font-family: 'Qanelas-Medium';
+  font-style: normal;
+  src: url('./fonts/Qanelas-Medium.ttf') format('truetype')
+};
+$bg_color: rgba(50, 50, 50, 0.3);
+@import './waterMark.scss';
+@import './panel.scss';
+
+.menuPanel {
+  width: 200px;
+  height: 200px;
+  display: flex;
+  //color: white;
+  background-color: $bg_color;
+  box-sizing: border-box;
+  flex-direction: column;
+  font-size: 20px;
+  padding: 20px;
+  border-bottom-right-radius: 10px;
+  flex-shrink: 0;
+};
+
+.menuButton {
+  user-select: none;
+  cursor: pointer;
+  border-radius: 5px;
+  &:hover {
+    background-color: rgba(128, 128, 200, 0.5);
+  }
+  font-family: 'Qanelas';
+};
+
+.map_selector {
+  width: 250px;
+  //height: 20px;
+  margin: 10px;
+}
