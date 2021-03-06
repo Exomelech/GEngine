@@ -1,4 +1,5 @@
 const { app, BrowserWindow } = require('electron');
+const path = require('path');
 
 if( require('electron-squirrel-startup') ){ // eslint-disable-line global-require
   app.quit();
@@ -13,6 +14,8 @@ const createWindow = () => {
     }
   });
   //win.setMenu(null);
+  // @ts-ignore
+  win.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
   win.loadFile('../bundle/index.html');
 };
 

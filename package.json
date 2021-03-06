@@ -2,7 +2,7 @@
   "name": "g_engine",
   "version": "0.0.1",
   "description": "",
-  "main": "src/index.js",
+  "main": ".webpack/main",
   "scripts": {
     "start": "npx webpack serve --open",
     "build": "npx webpack --mode production",
@@ -13,6 +13,51 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "config": {
+    "forge": {
+      "packagerConfig": {},
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "electron_webpack"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-rpm",
+          "config": {}
+        }
+      ],
+      "plugins": [
+        [
+          "@electron-forge/plugin-webpack",
+          {
+            "mainConfig": "./webpack.main.config.js",
+            "renderer": {
+              "config": "./webpack.renderer.config.js",
+              "entryPoints": [
+                {
+                  "html": "./src/index.html",
+                  "js": "./src/index.js",
+                  "name": "main_window"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    }
+  },
   "dependencies": {
     "@babel/core": "^7.13.1",
     "@babel/plugin-proposal-class-properties": "^7.13.0",
