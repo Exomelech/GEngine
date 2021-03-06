@@ -10,13 +10,14 @@ const createWindow = () => {
     width: 800,
     height: 600,
     webPreferences: {
-      nodeIntegration: true
+      nodeIntegration: true,
+      // @ts-ignore
+      preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY
     }
   });
   //win.setMenu(null);
   // @ts-ignore
   win.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
-  win.loadFile('../bundle/index.html');
 };
 
 app.whenReady().then(createWindow);

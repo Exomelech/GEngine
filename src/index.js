@@ -1,3 +1,3 @@
-import './index.css';
-import './interface/index/index';
-import './state/StateController';
+import './index.scss';
+import './interface/index.js';
+import './state/StateController.js';

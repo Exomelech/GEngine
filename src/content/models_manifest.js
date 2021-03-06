@@ -1,5 +1,5 @@
 import BaseRequire from './base_require.json';
-const CONTENT_PATH = '/';
+const CONTENT_PATH = '/src/content/';
 const ModelsManifest = [
   BaseRequire
 ];
