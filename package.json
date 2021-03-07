@@ -46,7 +46,7 @@
           {
             "mainConfig": "./webpack.main.config.js",
             "renderer": {
-              "config": "./webpack.renderer.config.js",
+              "config": "./webpack.web.config.js",
               "entryPoints": [
                 {
                   "html": "./src/index.html",

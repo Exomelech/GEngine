@@ -1,4 +1,3 @@
-// const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const webpack = require('webpack');
 const rules = require('./webpack.rules');
@@ -9,7 +8,7 @@ module.exports = {
   // entry: './src/index.js',
   devServer: {
     hot: true,
-    contentBase: './src/content'
+    contentBase: path.join(__dirname, 'src/content')
   },
   output: {
     filename: 'bundle.js',
@@ -20,9 +19,6 @@ module.exports = {
     rules
   },
   plugins: [
-    // new HtmlWebpackPlugin({
-    //   template: './src/index.html'
-    // }),
     new webpack.DefinePlugin({
       'process.env.ASSET_PATH': JSON.stringify(ASSET_PATH),
     })
