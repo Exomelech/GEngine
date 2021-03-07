@@ -32,6 +32,9 @@ export class Main {
     this.topLayer.addEventListener('click', this.onRequestPointerLock);
     window.addEventListener('resize', this.onWindowResize, false);
     document.addEventListener('pointerlockchange', this.onPointerlockchange);
+    proxyEvents.subscribeEvent('onEscape', () => {
+      document.exitPointerLock();
+    });
   };
 
   initFPSShow = () => {

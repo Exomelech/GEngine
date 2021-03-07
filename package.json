@@ -4,11 +4,7 @@
   "description": "",
   "main": ".webpack/main",
   "scripts": {
-    "start": "npx webpack serve --open",
-    "build": "npx webpack --mode production",
-    "server": "node src/server/index.js",
-    "server_nodemon": "nodemon src/server/index.js",
-    "start:electron": "electron-forge start",
+    "start": "electron-forge start",
     "package": "electron-forge package",
     "make": "electron-forge make"
   },
@@ -105,6 +101,7 @@
     "@electron-forge/maker-zip": "^6.0.0-beta.54",
     "@electron-forge/plugin-webpack": "^6.0.0-beta.54",
     "@marshallofsound/webpack-asset-relocator-loader": "^0.5.0",
+    "copy-webpack-plugin": "^6.4.1",
     "electron": "^12.0.0",
     "eslint": "^7.20.0",
     "eslint-plugin-react": "^7.22.0",

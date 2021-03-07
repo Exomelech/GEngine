@@ -35,7 +35,8 @@ class InnerStateController {
       this.pending = true;
       Loader.internalModelsListUpdate();
       //console.log(Loader.avaibleLists);
-      Loader.loadModelsList(name, this.onModelsListLoadComplete);
+      // Loader.loadModelsList(name, this.onModelsListLoadComplete);
+      Loader.loadModelsListParsing(name, this.onModelsListLoadComplete);
     };
   };
 

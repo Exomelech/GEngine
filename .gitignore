@@ -1,4 +1,5 @@
 /node_modules
 /bundle
-/src/content
+/content
+/static
 /.webpack

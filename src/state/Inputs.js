@@ -42,28 +42,22 @@ class Inputs{
   };
 
   onKeyDown = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     if( e.repeat ) return;
-    console.log(e);
-    console.log(e.code);
+    //console.log(e);
+    //console.log(e.code);
     const action = Inputs.KEYSACTIONS[e.code];
     if( action !== undefined ){
       this.keys[action] = true;
-      // if(Inputs.inputsBindedEvents[action] !== undefined){
-      //   Inputs.inputsBindedEvents[action]();
-      // };
-    };
-    if( e.ctrlKey ){
-      this.keys.ctrl = true;
-    };
-    if( e.altKey ){
-      this.keys.alt = true;
+      if(Inputs.inputsBindedEvents[action] !== undefined){
+        Inputs.inputsBindedEvents[action]();
+      };
     };
   };
   
   onKeyUp = (e) => {
-    e.preventDefault();
-    console.log(e);
+    // e.preventDefault();
+    //console.log(e);
     const action = Inputs.KEYSACTIONS[e.code];
     if( action !== undefined ){
       this.keys[action] = false;
