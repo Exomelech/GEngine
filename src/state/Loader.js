@@ -1,6 +1,6 @@
 import { LoadingManager } from 'three';
-import fs from 'fs';
-import path from 'path';
+// import fs from 'fs';
+// import path from 'path';
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader';
 import { MTLLoader } from 'three/examples/jsm/loaders/MTLLoader';
 import { ModelsManifest } from '../content_manifest/models_manifest';
@@ -73,8 +73,7 @@ class InnerLoader{
       for( const sub_title in this.avaibleLists[name] ){
         const sub = this.avaibleLists[name][sub_title];
         for( const el_name in sub ){
-          // @ts-ignore
-          const modelPath = `/content/${sub_title}/${el_name}`;
+          const modelPath = `./content/${sub[el_name]}`;
           const objPath = `${modelPath}.obj`;
           const mtlPath = `${modelPath}.mtl`;
           const model = await this.loadOBJ( objPath, mtlPath );
@@ -103,10 +102,10 @@ class InnerLoader{
       for( const sub_title in this.avaibleLists[name] ){
         const sub = this.avaibleLists[name][sub_title];
         for( const el_name in sub ){
-          const modelPath = `./content/${sub[el_name]}`;
+          const modelPath = `../content/${sub[el_name]}`;
           const obj = fs.readFileSync(`${modelPath}.obj`).toString();
           const mtl = fs.readFileSync(`${modelPath}.mtl`).toString();
-          const model = await this.loadModelByString( obj, mtl );
+          const model = this.loadModelByString( obj, mtl );
           //if( model ){
             if( this.validModels[sub_title].indexOf(el_name) === -1 ){
               this.validModels[sub_title].push(el_name);

@@ -1,19 +1,21 @@
 import { WebGLRenderer } from 'three';
 
-export class Render {
+export class Render extends WebGLRenderer {
+
   constructor(camera, scene, params) {
-    this.renderer = new WebGLRenderer({ antialias: false });
-    this.renderer.setSize(window.innerWidth, window.innerHeight);
-    this.dom = this.renderer.domElement;
+    super({ antialias: false });
+    this.setSize(window.innerWidth, window.innerHeight);
+    // this.dom = this.renderer.domElement;
     this.camera = camera;
     this.scene = scene;
-  }
+  };
 
   onWindowResize = (w, h) => {
-    this.renderer.setSize(w, h);
+    this.setSize(w, h);
   };
 
   think = () => {
-    this.renderer.render(this.scene, this.camera);
+    this.render(this.scene, this.camera);
   };
-}
+
+};

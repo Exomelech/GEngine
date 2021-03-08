@@ -35,8 +35,8 @@ class InnerStateController {
       this.pending = true;
       Loader.internalModelsListUpdate();
       //console.log(Loader.avaibleLists);
-      // Loader.loadModelsList(name, this.onModelsListLoadComplete);
-      Loader.loadModelsListParsing(name, this.onModelsListLoadComplete);
+      Loader.loadModelsList(name, this.onModelsListLoadComplete);
+      // Loader.loadModelsListParsing(name, this.onModelsListLoadComplete);
     };
   };
 
@@ -85,6 +85,13 @@ class InnerStateController {
       const map = Loader.getModel(this.mapToLoad, 'maps');
       this.main.changeMap( map );
       this.clientState = 'ingameMenu';
+    };
+  };
+
+  @action stopGame = () => {
+    if( this.clientState === 'ingameMenu' ){
+      delete this.main;
+      this.clientState = 'menu';
     };
   };
 

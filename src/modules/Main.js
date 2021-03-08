@@ -5,7 +5,7 @@ import { Camera } from './Camera';
 import { Render } from './Render';
 import { Scene } from './Scene';
 import { StateController } from '../state/StateController';
-import { Loader } from '../state/Loader';
+// import { Loader } from '../state/Loader';
 
 export class Main {
 
@@ -17,7 +17,7 @@ export class Main {
     this.scene = new Scene();
     this.scene.initSky();
     this.scene.initLights();
-    this.render = new Render(this.camera.camera, this.scene.scene);
+    this.render = new Render(this.camera, this.scene);
     this.showFPS = showFPS;
     if (showFPS) this.initFPSShow();
     this.initWindowEvents();
@@ -28,7 +28,7 @@ export class Main {
   initWindowEvents = () => {
     this.topLayer = document.getElementById('interface');
     const renderDiv = document.getElementById('render');
-    renderDiv.appendChild(this.render.dom);
+    renderDiv.appendChild(this.render.domElement);
     this.topLayer.addEventListener('click', this.onRequestPointerLock);
     window.addEventListener('resize', this.onWindowResize, false);
     document.addEventListener('pointerlockchange', this.onPointerlockchange);
@@ -77,7 +77,7 @@ export class Main {
     // @ts-ignore
     map.name = 'map';
     //console.log(map);
-    this.scene.addObject(map);
+    this.scene.add(map);
   };
 
 };

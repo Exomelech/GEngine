@@ -10,7 +10,7 @@ const createWindow = () => {
     height: 800,
     webPreferences: {
       nodeIntegration: true,
-      contextIsolation: false,
+      // contextIsolation: false,
       preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY
     }
   });

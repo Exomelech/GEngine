@@ -10,6 +10,7 @@ import { MenuButton } from '../components/MenuButton';
 
 export const GameMenu = () => {
 
+  const state = useStateController();
   //const [currentPanel, setPanel] = useState('none');
 
   //const panel = panels[currentPanel];

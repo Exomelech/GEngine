@@ -1,35 +1,31 @@
-import * as three from 'three';
+import { Scene as ThreeScene, Vector3, AmbientLight, DirectionalLight } from 'three';
 import { Sky } from 'three/examples/jsm/objects/Sky';
 import { StateController } from '../state/StateController';
 
-export class Scene {
+export class Scene extends ThreeScene {
 
   constructor() {
-    this.scene = new three.Scene();
-  };
-
-  addObject = (obj) => {
-    this.scene.add(obj);
+    super();
   };
 
   initSky = () => {
     const sky = new Sky();
     sky.scale.setScalar(450000);
-    this.addObject(sky);
+    this.add(sky);
     const { uniforms } = sky.material;
     uniforms.turbidity.value = 1.7;
     uniforms.rayleigh.value = 0.25;
     uniforms.mieCoefficient.value = 0.013;
     uniforms.mieDirectionalG.value = 0.67;
-    uniforms.sunPosition.value = new three.Vector3(0, 45000, 0);
+    uniforms.sunPosition.value = new Vector3(0, 45000, 0);
   };
 
   initLights = () => {
-    const ambientLight = new three.AmbientLight(0xcccccc, 0.3);
-    this.addObject(ambientLight);
-    const directionalLight = new three.DirectionalLight(0xfff394, 0.6);
+    const ambientLight = new AmbientLight(0xcccccc, 0.3);
+    this.add(ambientLight);
+    const directionalLight = new DirectionalLight(0xfff394, 0.6);
     directionalLight.position.set(10, 10, 10);
-    this.addObject(directionalLight);
+    this.add(directionalLight);
   };
 
   // changeMap = name => {
