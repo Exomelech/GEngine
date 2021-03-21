@@ -1,7 +1,7 @@
 import { LoadingManager } from 'three';
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader';
 import { MTLLoader } from 'three/examples/jsm/loaders/MTLLoader';
-import { ModelsManifest } from '../../shared/content_manifest/models_manifest';
+import { ModelsManifest } from 'Shared';
 
 class InnerLoader{
 

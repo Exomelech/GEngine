@@ -1,6 +1,6 @@
 import { Scene as ThreeScene, Vector3, AmbientLight, DirectionalLight } from 'three';
 import { Sky } from 'three/examples/jsm/objects/Sky';
-import { StateController } from '../state/StateController';
+import { StateController } from 'State';
 
 export class Scene extends ThreeScene {
 

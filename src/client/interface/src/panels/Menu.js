@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-// import { useStateController } from '../../../state/StateController';
+// import { useStateController } from 'State';
 import { MenuButton } from '../components/MenuButton';
 import { StartGamePanel } from './StartGamePanel';
 import { OptionsPanel } from './OptionsPanel';

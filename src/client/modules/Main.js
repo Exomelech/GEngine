@@ -1,10 +1,10 @@
 // import * as three from 'three';
 import Stats from 'stats.js';
-import { proxyEvents } from './proxyEvents';
+import { proxyEvents } from 'Shared';
 import { Camera } from './Camera';
 import { Render } from './Render';
 import { Scene } from './Scene';
-import { StateController } from '../state/StateController';
+import { StateController } from 'State';
 import { Phys } from './objects/phys';
 // import { Loader } from '../state/Loader';
 

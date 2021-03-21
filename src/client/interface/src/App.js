@@ -4,7 +4,7 @@ import { observer } from 'mobx-react-lite';
 import { MenuPanel } from './panels/Menu';
 import { WaterMark } from './components/WaterMark';
 import { GameMenu } from './panels/GameMenu';
-import { useStateController } from '../../state/StateController';
+import { useStateController } from 'State';
 
 const panels = {
   menu: <>

@@ -1,7 +1,6 @@
 import { PerspectiveCamera } from 'three';
-// import { FreeCam } from './camera/cameraFreeCam';
-import { proxyEvents } from './proxyEvents';
-import { StateController } from '../state/StateController';
+import { proxyEvents } from 'Shared';
+import { StateController } from 'State';
 import { Object3DControls } from './lib/Object3DControls';
 import DefConfig from '../configs/camera_def';
 

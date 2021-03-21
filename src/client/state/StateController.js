@@ -3,7 +3,7 @@ import { action, observable, makeAutoObservable, makeObservable } from 'mobx';
 import { Main } from '../modules/Main';
 import { Inputs } from './Inputs';
 import { Loader } from './Loader';
-import { proxyEvents } from '../modules/proxyEvents';
+import { proxyEvents } from 'Shared';
 
 class InnerStateController {
 
