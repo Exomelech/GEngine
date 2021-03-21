@@ -1,5 +1,5 @@
 import './index.scss';
-import './interface/index.js';
-import './state/StateController.js';
+import './client/interface/index.js';
+import './client/state/StateController.js';
 
 // console.log(process.env.NODE_ENV);

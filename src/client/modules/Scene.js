@@ -28,6 +28,31 @@ export class Scene extends ThreeScene {
     this.add(directionalLight);
   };
 
+  clear = () => {
+    this.traverse( object => {
+      if( !object.isMesh ) return;
+      object.geometry.dispose();
+
+      if( object.material.isMaterial ){
+        this.clearMaterial(object.material);
+      }else{
+        for( const material of object.material ){
+          this.clearMaterial(material);
+        };
+      };
+    });
+  };
+
+  clearMaterial = material => {
+    material.dispose();
+    for (const key of Object.keys(material)) {
+      const value = material[key];
+      if (value && typeof value === 'object' && 'minFilter' in value) {
+        value.dispose();
+      };
+    };
+  };
+
   // changeMap = name => {
   //   const map = StateController.getModel('maps', name);
   //   if( map ){

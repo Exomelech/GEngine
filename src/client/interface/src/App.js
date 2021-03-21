@@ -7,10 +7,10 @@ import { GameMenu } from './panels/GameMenu';
 import { useStateController } from '../../state/StateController';
 
 const panels = {
-  menu:  <>
-          <MenuPanel />
-          <WaterMark />
-        </>,
+  menu: <>
+    <MenuPanel />
+    <WaterMark />
+  </>,
   ingameMenu: <GameMenu />
 };
 

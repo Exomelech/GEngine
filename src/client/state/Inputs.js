@@ -1,5 +1,6 @@
 import { observable, action, autorun, makeAutoObservable } from 'mobx';
 import { proxyEvents } from '../modules/proxyEvents';
+// import { proxyEvents } from 'ProxyEvents';
 
 class Inputs{
   constructor(store){

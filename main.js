@@ -1,22 +1,44 @@
 const { app, BrowserWindow } = require('electron');
+const path = require('path');
 
-if( require('electron-squirrel-startup') ){ // eslint-disable-line global-require
+if( require('electron-squirrel-startup') ){
   app.quit();
 };
 
+let win;
+
 const createWindow = () => {
-  const win = new BrowserWindow({
+  win = new BrowserWindow({
     width: 1200,
     height: 800,
     webPreferences: {
-      nodeIntegration: true,
-      // contextIsolation: false,
-      preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY
+      nodeIntegration: false,
+      contextIsolation: true,
+      enableRemoteModule: false,
+      preload: path.join(__dirname, "./src/preloader.js")
     }
   });
   win.setMenu(null);
   win.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
   win.webContents.openDevTools();
+  win.webContents.on( 'before-input-event', (e, input) => {
+    if( !input.isAutoRepeat ){
+      console.log(input);
+    };
+    /* 
+      input = {  
+        type: 'keyUp',
+        key: 'w',
+        code: 'KeyW',
+        isAutoRepeat: false,
+        isComposing: false,
+        shift: false,
+        control: false,
+        alt: false,
+        meta: false
+      }
+    */
+  });
 };
 
 app.whenReady().then(createWindow);

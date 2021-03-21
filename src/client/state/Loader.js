@@ -1,9 +1,7 @@
 import { LoadingManager } from 'three';
-// import fs from 'fs';
-// import path from 'path';
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader';
 import { MTLLoader } from 'three/examples/jsm/loaders/MTLLoader';
-import { ModelsManifest } from '../content_manifest/models_manifest';
+import { ModelsManifest } from '../../shared/content_manifest/models_manifest';
 
 class InnerLoader{
 
@@ -61,19 +59,13 @@ class InnerLoader{
     });
   };
 
-  loadModelByString = (obj, mtl) => {
-    const mat = this.mtlLoader.parse(mtl);
-    const model = this.objLoader.setMaterials(mat).parse(obj);
-    return model;
-  };
-
   loadModelsList = async (name, cb) => {
     this.onLoad = true;
     if( this.avaibleLists[name] !== undefined ){
       for( const sub_title in this.avaibleLists[name] ){
         const sub = this.avaibleLists[name][sub_title];
         for( const el_name in sub ){
-          const modelPath = `./content/${sub[el_name]}`;
+          const modelPath = `/content/${sub[el_name]}`;
           const objPath = `${modelPath}.obj`;
           const mtlPath = `${modelPath}.mtl`;
           const model = await this.loadOBJ( objPath, mtlPath );
@@ -85,35 +77,6 @@ class InnerLoader{
           }else{
             console.warn(`Loader: loadModelsList error, no such model name: ${el_name} in sub cat: ${sub_title} of list: ${name}`);
           };
-        };
-      };
-      this.onLoad = false;
-      cb(true, this.loadedModels);
-    }else{
-      console.warn(`Loader: loadModelsList error, no such list name: "${name}"!`);
-      this.onLoad = false;
-      cb(false, name);
-    };
-  };
-
-  loadModelsListParsing = async (name, cb) => {
-    this.onLoad = true;
-    if( this.avaibleLists[name] !== undefined ){
-      for( const sub_title in this.avaibleLists[name] ){
-        const sub = this.avaibleLists[name][sub_title];
-        for( const el_name in sub ){
-          const modelPath = `../content/${sub[el_name]}`;
-          const obj = fs.readFileSync(`${modelPath}.obj`).toString();
-          const mtl = fs.readFileSync(`${modelPath}.mtl`).toString();
-          const model = this.loadModelByString( obj, mtl );
-          //if( model ){
-            if( this.validModels[sub_title].indexOf(el_name) === -1 ){
-              this.validModels[sub_title].push(el_name);
-            };
-            this.loadedModels[sub_title][el_name] = model;
-          // }else{
-          //   console.warn(`Loader: loadModelsList error, no such model name: ${el_name} in sub cat: ${sub_title} of list: ${name}`);
-          // };
         };
       };
       this.onLoad = false;

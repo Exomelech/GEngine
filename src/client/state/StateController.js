@@ -90,7 +90,9 @@ class InnerStateController {
 
   @action stopGame = () => {
     if( this.clientState === 'ingameMenu' ){
+      this.main.dispose();
       delete this.main;
+      console.log(this.main);
       this.clientState = 'menu';
     };
   };

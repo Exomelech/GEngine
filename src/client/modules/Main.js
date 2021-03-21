@@ -5,13 +5,13 @@ import { Camera } from './Camera';
 import { Render } from './Render';
 import { Scene } from './Scene';
 import { StateController } from '../state/StateController';
+import { Phys } from './objects/phys';
 // import { Loader } from '../state/Loader';
 
 export class Main {
 
   constructor(showFPS = false) {
-    // proxyEvents.createEvent('onMouseLock');
-    this.enable = false;
+    this.enable = true;
     this.camera = new Camera();
     this.camera.setPos(0, 2, 0);
     this.scene = new Scene();
@@ -19,10 +19,13 @@ export class Main {
     this.scene.initLights();
     this.render = new Render(this.camera, this.scene);
     this.showFPS = showFPS;
-    if (showFPS) this.initFPSShow();
+    if(showFPS) this.initFPSShow();
+
+    this.physWorld = Phys.initPhys();
+    console.log(this.physWorld);
+
     this.initWindowEvents();
     this.updateMainLoop();
-    //StateController.addMainClass(this);
   };
 
   initWindowEvents = () => {
@@ -65,19 +68,29 @@ export class Main {
   };
 
   updateMainLoop = () => {
-    if (this.showFPS) this.statsPanel.begin();
-    this.camera.think();
-    this.render.think();
-    if (this.showFPS) this.statsPanel.end();
-    requestAnimationFrame(this.updateMainLoop);
+    if( this.enable ){
+      if (this.showFPS) this.statsPanel.begin();
+      this.camera.think();
+      this.render.think();
+      if (this.showFPS) this.statsPanel.end();
+      requestAnimationFrame(this.updateMainLoop);
+    };
   };
 
   changeMap = map => {
     // const map = Loader.getModel('maps', name);
-    // @ts-ignore
     map.name = 'map';
     //console.log(map);
     this.scene.add(map);
+  };
+
+  dispose = () => {
+    console.log('dispose renderer!');
+    this.enable = false;
+    this.render.domElement.remove();
+    this.render.dispose();
+    // this.camera.dispose();
+    this.scene.clear();
   };
 
 };

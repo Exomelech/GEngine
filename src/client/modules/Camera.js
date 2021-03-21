@@ -6,6 +6,7 @@ import { Object3DControls } from './lib/Object3DControls';
 import DefConfig from '../configs/camera_def';
 
 class Camera extends PerspectiveCamera{
+
   static CAMERA_ENUMS = {
     FREECAM: 0,
     FIRSTPERSON: 1,

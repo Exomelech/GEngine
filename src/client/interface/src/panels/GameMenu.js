@@ -17,7 +17,7 @@ export const GameMenu = () => {
 
   return ( <>
     <div className='menuPanel'>
-      <MenuButton title="Exit to menu" onPress={() => {}}/>
+      <MenuButton title="Exit to menu" onPress={state.stopGame}/>
     </div>
     {/* {panel} */}
   </>);
