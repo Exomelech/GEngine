@@ -1,5 +1,5 @@
 // import { observable, action, autorun, makeAutoObservable } from 'mobx';
-import { proxyEvents } from 'Shared';
+import {EventBus} from 'Shared';
 
 class Inputs{
   constructor(store){
@@ -34,11 +34,11 @@ class Inputs{
   };
 
   initAutorunsAndEvents = () => {
-    proxyEvents.createEvent('onUse');
-    proxyEvents.createEvent('movementButtons');
-    proxyEvents.createEvent('onMouseMove');
-    proxyEvents.createEvent('onEscape');
-    proxyEvents.createEvent('onJump');
+    EventBus.createEvent('onUse');
+    EventBus.createEvent('movementButtons');
+    EventBus.createEvent('onMouseMove');
+    EventBus.createEvent('onEscape');
+    EventBus.createEvent('onJump');
   };
 
   onKeyDown = (e) => {
@@ -67,7 +67,7 @@ class Inputs{
   onMouseMove = (e) => {
     this.mouse.x = e.movementX;
     this.mouse.y = e.movementY;
-    proxyEvents.triggerEvent('onMouseMove', {
+    EventBus.triggerEvent('onMouseMove', {
       x: e.movementX,
       y: e.movementY,
     });
@@ -86,9 +86,9 @@ class Inputs{
   };
 
   static inputsBindedEvents = {
-    use: () => proxyEvents.triggerEvent('onUse'),
-    jump: () => proxyEvents.triggerEvent('onJump'),
-    escape: () => proxyEvents.triggerEvent('onEscape')
+    use: () => EventBus.triggerEvent('onUse'),
+    jump: () => EventBus.triggerEvent('onJump'),
+    escape: () => EventBus.triggerEvent('onEscape')
   };
 };
 

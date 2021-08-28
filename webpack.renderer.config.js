@@ -2,10 +2,6 @@ const CopyPlugin = require("copy-webpack-plugin");
 const path = require("path");
 const rules = require('./webpack.rules');
 
-const SHARED_PATH = path.join(__dirname, 'src/shared/index.js');
-const CLIENT_STATE_CONTROLLER_PATH = path.join(__dirname, 'src/client/state/StateController.js');
-// const PROXY_EVENTS_PATH = path.join(__dirname, 'src/shared/proxyEvents.js');
-
 module.exports = {
   mode: 'development',
   devServer: {
@@ -24,8 +20,12 @@ module.exports = {
   ],
   resolve: {
     alias: {
-      Shared: SHARED_PATH,
-      State: CLIENT_STATE_CONTROLLER_PATH,
+      '@': path.join(__dirname, '/src/'),
+      '@S': path.join(__dirname, '/src/server/'),
+      '@C': path.join(__dirname, '/src/client/'),
+      '@CI': path.join(__dirname, '/src/client/interface/'),
+      '@Shared': path.join(__dirname, '/src/shared/'),
+      'Shared': path.join(__dirname, '/src/shared/index.js'),
     },
   }
 };

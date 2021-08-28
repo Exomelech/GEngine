@@ -47,7 +47,6 @@ class InnerLoader{
     return new Promise( async res => {
       const mat = await this.loadMTL(texture);
       if( mat ){
-        // @ts-ignore
         await this.objLoader.setMaterials(mat).load(model,
           obj => { res(obj) },
           () => {},
@@ -101,5 +100,4 @@ class InnerLoader{
 
 };
 
-const Loader = new InnerLoader();
-export { Loader };
+export const Loader = new InnerLoader();

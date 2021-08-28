@@ -1,5 +1,5 @@
 import React from 'react';
-import { useStateController } from 'State';
+import { useStateController } from '@C/state/StateController';
 import { MenuButton } from '../components/MenuButton';
 // const panels = {
 //   none: <></>,

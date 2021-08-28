@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { observer } from 'mobx-react-lite';
 import { MenuButton } from '../components/MenuButton';
 import { Panel } from '../components/Panel';
-import { useStateController } from 'State';
+import { useStateController } from '@C/state/StateController';
 import Select from 'react-select'
 
 export const StartGamePanel = observer(() => {

@@ -1,10 +1,10 @@
 // import * as three from 'three';
 import Stats from 'stats.js';
-import { proxyEvents } from 'Shared';
+import { EventBus } from 'Shared';
 import { Camera } from './Camera';
 import { Render } from './Render';
 import { Scene } from './Scene';
-import { StateController } from 'State';
+import { StateController } from '@C/state/StateController';
 import { Phys } from './objects/phys';
 // import { Loader } from '../state/Loader';
 
@@ -35,7 +35,7 @@ export class Main {
     this.topLayer.addEventListener('click', this.onRequestPointerLock);
     window.addEventListener('resize', this.onWindowResize, false);
     document.addEventListener('pointerlockchange', this.onPointerlockchange);
-    proxyEvents.subscribeEvent('onEscape', () => {
+    EventBus.subscribeEvent('onEscape', () => {
       document.exitPointerLock();
     });
   };
@@ -57,7 +57,7 @@ export class Main {
 
   onPointerlockchange = () => {
     const state = document.pointerLockElement === this.topLayer;
-    proxyEvents.triggerEvent('onMouseLock', { state });
+    EventBus.triggerEvent('onMouseLock', { state });
   };
 
   onWindowResize = () => {

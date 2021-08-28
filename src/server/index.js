@@ -26,29 +26,3 @@ app.get('/', (req, res) => {
 
 
 app.listen(port, () => console.log(`Running at Port ${port}`));
-
-/*
-app.post("/auth/", jsonParser, (req, res) => {
-  console.log( 'Client has request auth' );
-  external_api.auth_request(req.body)
-    .then( data => res.json(data) );
-});
-*/
-// app.get('/helloworld', (req, res) => {
-//   console.log('request')
-//   res.json({
-//     a:'i love nikita'
-//   })
-// });
-
-// app.post('/registration', jsonParser, (req, res) => {
-//   //external_api.reg_request(req.body)
-//   temp_db.registration( req.body )
-//   .then( data => res.json(data) );
-// });
-
-// app.post('/login', jsonParser, (req, res) => {
-//   //external_api.login_request(req.body)
-//   temp_db.login(req.body)
-//   .then( data => res.json(data) );
-// });

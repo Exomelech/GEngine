@@ -1,9 +1,9 @@
 import React, {createContext, useContext} from 'react';
 import { action, observable, makeAutoObservable, makeObservable } from 'mobx';
-import { Main } from '../modules/Main';
+import { Main } from '@C/modules/Main';
 import { Inputs } from './Inputs';
 import { Loader } from './Loader';
-import { proxyEvents } from 'Shared';
+import { EventBus } from 'Shared';
 
 class InnerStateController {
 
@@ -16,7 +16,7 @@ class InnerStateController {
     this.mapToLoad = 'none';
     this.clientState = 'loading';
     this.avaibleMaps = [];
-    //proxyEvents.createEvent('mapChangeRequest');
+    //EventBus.createEvent('mapChangeRequest');
     //makeAutoObservable(this);
     makeObservable(this, {
       avaibleMaps: observable,
@@ -26,7 +26,7 @@ class InnerStateController {
       onMouseLock: action
     });
 
-    proxyEvents.subscribeEvent('onMouseLock', this.onMouseLock, true);
+    EventBus.subscribeEvent('onMouseLock', this.onMouseLock, true);
 
   };
 
@@ -107,7 +107,7 @@ class InnerStateController {
   //   if( !this.await ){
   //     this.await = true;
   //     //while( Loader.onLoad );
-  //     //proxyEvents.triggerEvent('mapChangeRequest', {map: name});
+  //     //EventBus.triggerEvent('mapChangeRequest', {map: name});
   //     this.main.changeMap(name);
   //     this.await = false;
   //     console.log('Store: map changed')

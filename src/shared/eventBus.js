@@ -1,4 +1,4 @@
-class ProxyEvents{
+class eventBus{
 
   constructor(){
     this.events = {};
@@ -39,5 +39,4 @@ class ProxyEvents{
 
 };
 
-const proxyEvents = new ProxyEvents();
-export { proxyEvents };
+export const EventBus = new eventBus();

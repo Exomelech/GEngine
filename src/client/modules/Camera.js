@@ -1,6 +1,6 @@
 import { PerspectiveCamera } from 'three';
-import { proxyEvents } from 'Shared';
-import { StateController } from 'State';
+import { EventBus } from 'Shared';
+import { StateController } from '@C/state/StateController';
 import { Object3DControls } from './lib/Object3DControls';
 import DefConfig from '../configs/camera_def';
 
@@ -53,11 +53,11 @@ class Camera extends PerspectiveCamera{
 
   initControl = () => {
     this.mouseEnable = false;
-    proxyEvents.subscribeEvent('onMouseLock', (e) => {
+    EventBus.subscribeEvent('onMouseLock', (e) => {
       this.mouseEnable = e.state;
     });
     if (this.type === 0) {
-      proxyEvents.subscribeEvent('onMouseMove', (e) => {
+      EventBus.subscribeEvent('onMouseMove', (e) => {
         this.firstPerson(e);
       });
     }

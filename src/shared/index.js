@@ -1,7 +1,7 @@
 import { ModelsManifest } from './content_manifest/models_manifest';
-import { proxyEvents } from './proxyEvents';
+import { EventBus } from '@Shared/eventBus';
 
-export { ModelsManifest, proxyEvents };
+export { ModelsManifest, EventBus };
 
 // export default {
 //   ModelsManifest,
