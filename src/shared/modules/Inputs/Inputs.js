@@ -1,5 +1,5 @@
-// import { observable, action, autorun, makeAutoObservable } from 'mobx';
 import {EventBus} from 'Shared';
+import {actions, keys} from './mappedInputs';
 
 class Inputs{
   constructor(){
@@ -9,17 +9,10 @@ class Inputs{
       x: 0,
       y: 0
     };
-    this.keys = {
-      move_forward: false,
-      move_backward: false,
-      strafe_left: false,
-      strafe_right: false,
-      use: false,
-      jump: false,
-      shift: false,
-      ctrl: false,
-      alt: false,
-    };
+    this.keys = actions.reduce((next, acc) => {
+      acc[next] = false;
+      return acc;
+    }, {});
     this.initDocEvents();
     this.initAutorunsAndEvents();
   };
@@ -71,17 +64,7 @@ class Inputs{
     });
   };
 
-  static KEYSACTIONS = {
-    KeyW: 'move_forward',
-    KeyS: 'move_backward',
-    KeyA: 'strafe_left',
-    KeyD: 'strafe_right',
-    KeyE: 'use',
-    Space: 'jump',
-    Escape: 'escape',
-    ShiftLeft: 'shift',
-    ControlLeft: 'ctrl'
-  };
+  static KEYSACTIONS = actions;
 
   static inputsBindedEvents = {
     use: () => EventBus.triggerEvent('onUse'),

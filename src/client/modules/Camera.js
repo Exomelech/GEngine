@@ -25,15 +25,19 @@ class Camera extends PerspectiveCamera{
     "4/3": 4/3
   };
 
-  constructor(type = 0, params = DefConfig) {
+  constructor(type = 0, params) {
+    const merged = {
+      ...DefConfig,
+      params,
+    }
     super(
-      params.fov,
-      Camera.ASPECT_FORMATS[params.aspect],
-      params.near,
-      params.far
+      merged.fov,
+      Camera.ASPECT_FORMATS[merged.aspect],
+      merged.near,
+      merged.far
     );
     this.type = Camera.typeCheck(type) ? type : 0;
-    this.cameraInit(params);
+    this.cameraInit(merged);
     this.initControl();
   }
 

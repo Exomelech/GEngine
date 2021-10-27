@@ -16,9 +16,9 @@ const panels = {
 
 export const App = observer(() => {
 
-  const state = useStateController();
+  const {clientState} = useStateController();
 
-  const panel = panels[state.clientState];
+  const panel = panels[clientState];
 
   return (
     <>

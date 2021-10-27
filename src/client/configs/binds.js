@@ -1,0 +1,17 @@
+export const binds = {
+  KeyW: 'move_forward',
+  KeyS: 'move_backward',
+  KeyA: 'strafe_left',
+  KeyD: 'strafe_right',
+  KeyE: 'use',
+  KeyQ: '',
+  KeyZ: '',
+  KeyX: '',
+  KeyC: '',
+  KeyF: '',
+  KeyR: 'reload',
+  Space: 'jump',
+  Escape: 'escape',
+  ShiftLeft: 'shift',
+  ControlLeft: 'ctrl',
+}
